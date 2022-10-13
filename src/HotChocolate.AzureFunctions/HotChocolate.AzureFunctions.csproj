@@ -17,16 +17,15 @@
 
   <ItemGroup>
     <PackageReference Include="HotChocolate.AspNetCore" Version="13.0.0-preview.66" />
-    <PackageReference Include="Microsoft.Azure.WebJobs.Script.ExtensionsMetadataGenerator" Version="4.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
   </ItemGroup>
 
-  <ItemGroup>
+  <!-- <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)..\MSBuild\HotChocolate.AzureFunctions.props" Pack="true" PackagePath="build/HotChocolate.AzureFunctions.props" Visible="false" />
     <None Include="$(MSBuildThisFileDirectory)..\MSBuild\HotChocolate.AzureFunctions.targets" Pack="true" PackagePath="build/HotChocolate.AzureFunctions.targets" Visible="false" />
-  </ItemGroup>
+  </ItemGroup> -->
 
 </Project>

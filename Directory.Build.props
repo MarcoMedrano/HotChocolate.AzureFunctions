@@ -1,5 +1,5 @@
 <Project>
-  <Import Project="$([MSBuild]::GetPathOfFileAbove('BasedInHotChocolate.Directory.Build.props', '$(MSBuildThisFileDirectory)'))" />
+  <Import Project="BasedInHotChocolate.Directory.Build.props" />
 
   <PropertyGroup>
     <TargetFrameworks>$(AzfTargetFrameworks)</TargetFrameworks>
