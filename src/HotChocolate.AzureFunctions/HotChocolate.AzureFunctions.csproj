@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <PackageReference Include="HotChocolate.AspNetCore" Version="13.0.0-preview.66" />
+    <PackageReference Include="Microsoft.Azure.WebJobs.Script.ExtensionsMetadataGenerator" Version="4.0.1" />
   </ItemGroup>
 
   <ItemGroup>
