@@ -1,0 +1,71 @@
+<Project>
+
+  <PropertyGroup>
+    <IsMacOsArm Condition="'$(NETCoreSdkPortableRuntimeIdentifier)' == 'osx-arm64'">true</IsMacOsArm>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <LangVersion>preview</LangVersion>
+    <Version Condition="$(Version) == ''">0.0.0</Version>
+    <NoWarn>$(NoWarn);CS0436;RS0026;RS0027;RS0041</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Product>Hot Chocolate</Product>
+    <Authors>Marco Medrano</Authors>
+    <Company>markdind</Company>
+    <Copyright>Copyright © markind 2022</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>GraphQL hotchocolate azure functions</PackageTags>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <RepositoryUrl>https://github.com/marcomedrano/HotChocolate.AzureFunctions.git</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <IncludeSymbols>true</IncludeSymbols>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <LibraryTargetFrameworks Condition="'$(IsMacOsArm)' != 'true'">net7.0; net6.0; net5.0; netcoreapp3.1; netstandard2.0</LibraryTargetFrameworks>
+    <LibraryTargetFrameworks Condition="'$(IsMacOsArm)' == 'true'">net7.0; net6.0; netstandard2.0</LibraryTargetFrameworks>
+    <Library2TargetFrameworks>net7.0; net6.0</Library2TargetFrameworks>
+    <TestTargetFrameworks Condition="'$(IsMacOsArm)' != 'true'">net7.0; net6.0; net5.0; netcoreapp3.1</TestTargetFrameworks>
+    <TestTargetFrameworks Condition="'$(IsMacOsArm)' == 'true'">net7.0; net6.0</TestTargetFrameworks>
+    <AspNetTargetFrameworks Condition="'$(IsMacOsArm)' != 'true'">net7.0; net6.0; net5.0; netcoreapp3.1</AspNetTargetFrameworks>
+    <AspNetTargetFrameworks Condition="'$(IsMacOsArm)' == 'true'">net7.0; net6.0</AspNetTargetFrameworks>
+    <AzfTargetFrameworks Condition="'$(IsMacOsArm)' != 'true'">net7.0; net6.0; net5.0; netcoreapp3.1</AzfTargetFrameworks>
+    <AzfTargetFrameworks Condition="'$(IsMacOsArm)' == 'true'">net7.0; net6.0</AzfTargetFrameworks>
+    <!-- Azure Functions Isolated Process does not support netcoreapp3.1 (on net5.0+) -->
+    <AzfIsoProcTargetFrameworks Condition="'$(IsMacOsArm)' != 'true'">net7.0; net6.0; net5.0;</AzfIsoProcTargetFrameworks>
+    <AzfIsoProcTargetFrameworks Condition="'$(IsMacOsArm)' == 'true'">net7.0; net6.0</AzfIsoProcTargetFrameworks>
+    <SourceGenTargetFrameworks>net7.0; net6.0; netstandard2.0</SourceGenTargetFrameworks>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.0" PrivateAssets="All"/> -->
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+    <!-- <None Include="$(MSBuildThisFileDirectory)..\website\static\resources\greendonut-signet.png" Pack="true" PackagePath="greendonut-signet.png" Visible="false" />
+    <None Include="$(MSBuildThisFileDirectory)..\website\static\resources\hotchocolate-signet.png" Pack="true" PackagePath="hotchocolate-signet.png" Visible="false" />
+    <None Include="$(MSBuildThisFileDirectory)..\website\static\resources\strawberryshake-signet.png" Pack="true" PackagePath="strawberryshake-signet.png" Visible="false" />
+    <None Include="$(MSBuildThisFileDirectory)..\LICEN*" Pack="true" PackagePath="" Visible="false" /> -->
+  </ItemGroup>
+
+</Project>

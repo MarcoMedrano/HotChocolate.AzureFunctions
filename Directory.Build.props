@@ -1,0 +1,10 @@
+<Project>
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('BasedInHotChocolate.Directory.Build.props', '$(MSBuildThisFileDirectory)'))" />
+
+  <PropertyGroup>
+    <TargetFrameworks>$(AzfTargetFrameworks)</TargetFrameworks>
+    <TargetFrameworks Condition="$(MSBuildProjectName.Contains('Isolated'))">$(AzfIsoProcTargetFrameworks)</TargetFrameworks>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
