@@ -167,7 +167,7 @@ public static class HotChocolateAzureFunctionServiceCollectionExtensions
         this IServiceCollection services
     )
     {
-        services.AddSingleton<IGraphQLRequestExecutor>(sp =>
+        services.AddSingleton<IMultiSchemaRequestExecutor>(sp =>
         {
             var options = new GraphQLServerOptions();
 

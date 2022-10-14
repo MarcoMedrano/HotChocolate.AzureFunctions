@@ -6,9 +6,9 @@ namespace Azf.IsolatedProcess;
 
 public class GraphQLFunction
 {
-    private readonly IGraphQLRequestExecutor _executor;
+    private readonly IMultiSchemaRequestExecutor _executor;
 
-    public GraphQLFunction(IGraphQLRequestExecutor executor)
+    public GraphQLFunction(IMultiSchemaRequestExecutor executor)
     {
         _executor = executor;
     }
@@ -17,5 +17,5 @@ public class GraphQLFunction
     public Task<HttpResponseData> Run(
         [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "graphql/{**slug}")]
         HttpRequestData request)
-        => _executor.ExecuteAsync(request);
+        => _executor.ExecuteAsync(request, "persons");
 }

@@ -18,10 +18,16 @@ internal sealed class GraphQLExtensions : IExtensionConfigProvider
     public void Initialize(ExtensionConfigContext context)
     {
         context.AddBindingRule<GraphQLAttribute>().BindToInput(BindExecutor);
+        context.AddBindingRule<GraphQLAttribute>().BindToInput(BindExecutorMultiSchema);
     }
 
     private Task<IGraphQLRequestExecutor> BindExecutor(
         GraphQLAttribute attr,
         ValueBindingContext context)
         => Task.FromResult(_services.GetRequiredService<IGraphQLRequestExecutor>());
+
+    private Task<IMultiSchemaRequestExecutor> BindExecutorMultiSchema(
+        GraphQLAttribute attr,
+        ValueBindingContext context)
+        => Task.FromResult(_services.GetRequiredService<IMultiSchemaRequestExecutor>());
 }

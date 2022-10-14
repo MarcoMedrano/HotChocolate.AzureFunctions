@@ -6,7 +6,7 @@ using Microsoft.Extensions.FileProviders;
 using static HotChocolate.AspNetCore.MiddlewareRoutingType;
 namespace HotChocolate.AzureFunctions;
 
-internal sealed class MultiSchemaRequestExecutor : IGraphQLRequestExecutor
+internal sealed class MultiSchemaRequestExecutor : IMultiSchemaRequestExecutor
 {
     private readonly EmptyResult _result = new();
 
@@ -47,18 +47,17 @@ internal sealed class MultiSchemaRequestExecutor : IGraphQLRequestExecutor
 
     public async Task<IActionResult> ExecuteAsync(HttpContext context)
     {
+        return await ExecuteAsync(context, Schema.DefaultName);
+    }
+
+    public async Task<IActionResult> ExecuteAsync(HttpContext context, string schemaNameOrDefault)
+    {
         if (context is null)
         {
             throw new ArgumentNullException(nameof(context));
         }
 
         PathString path = context.Request.Path.ToString().TrimEnd('/');
-        string schemaNameOrDefault;
-
-        if (path.ToString().Contains('/'))
-            schemaNameOrDefault = path.ToString().Split('/').Last();
-        else
-            schemaNameOrDefault = Schema.DefaultName;
 
         BuildPipeline(schemaNameOrDefault, path, _options);
 
