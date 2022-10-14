@@ -27,7 +27,7 @@ internal sealed class MultiSchemaRequestExecutor : IMultiSchemaRequestExecutor
         var fileProvider = CreateFileProvider();
 
         var appBuilder = new ApplicationBuilder(sp)
-                    // .UseCancellation()
+                    // .UseCancellation() // Original Azf implementation does not use it either.
                     .UseMiddleware<WebSocketSubscriptionMiddleware>(schemaNameOrDefault)
                     .UseMiddleware<HttpPostMiddleware>(schemaNameOrDefault)
                     .UseMiddleware<HttpMultipartMiddleware>(schemaNameOrDefault)
@@ -35,12 +35,8 @@ internal sealed class MultiSchemaRequestExecutor : IMultiSchemaRequestExecutor
                     .UseMiddleware<ToolDefaultFileMiddleware>(fileProvider, path)
                     .UseMiddleware<ToolOptionsFileMiddleware>(path)
                     .UseMiddleware<ToolStaticFileMiddleware>(fileProvider, path)
-                    .UseMiddleware<HttpGetMiddleware>(schemaNameOrDefault)
-                    .Use(_ => context =>
-                    {
-                        context.Response.StatusCode = 404;
-                        return Task.CompletedTask;
-                    });
+                    .UseMiddleware<HttpGetMiddleware>(schemaNameOrDefault);
+                    //.Use(_ => context => { context.Response.StatusCode = 405; return Task.CompletedTask;}); // Not needed already returns 404
 
         endpoints.Add(schemaNameOrDefault, (appBuilder.Build(), options));
     }
