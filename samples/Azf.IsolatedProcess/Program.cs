@@ -6,6 +6,9 @@ var host = new HostBuilder()
     .ConfigureServices(s =>{
         s.AddGraphQLServer("persons")
         .AddQueryType<Query>();
+
+        s.AddGraphQLServer("persons2")
+        .AddQueryType<Query2>();
     })
     .AddGraphQLFunctions()
     .Build();
