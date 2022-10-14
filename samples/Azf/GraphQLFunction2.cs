@@ -5,13 +5,13 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using HotChocolate.AzureFunctions;
 namespace Azf;
 
-public class GraphQLFunction
+public class GraphQLFunction2
 {
-    [FunctionName("GraphQLHttpFunction")]
+    [FunctionName(nameof(GraphQLFunction2))]
     public Task<IActionResult> Run(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "persons/{**slug}")] 
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "persons2/{**slug}")]
         HttpRequest request,
-        [GraphQL] 
+        [GraphQL]
         IMultiSchemaRequestExecutor executor)
-        => executor.ExecuteAsync(request, "persons");
+        => executor.ExecuteAsync(request, "persons2");
 }
