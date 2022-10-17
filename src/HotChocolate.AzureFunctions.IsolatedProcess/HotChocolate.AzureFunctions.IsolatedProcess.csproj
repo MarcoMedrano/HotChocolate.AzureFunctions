@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <PackageId>HotChocolate.AzureFunctions.IsolatedProcess</PackageId>
+    <PackageId>Markind.HotChocolate.AzureFunctions.IsolatedProcess</PackageId>
     <AssemblyName>HotChocolate.AzureFunctions.IsolatedProcess</AssemblyName>
     <RootNamespace>HotChocolate.AzureFunctions.IsolatedProcess</RootNamespace>
     <Description>This package contains the GraphQL AzureFunctions Isolated Process integration for Hot Chocolate.</Description>

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <PackageId>HotChocolate.AzureFunctions</PackageId>
+    <PackageId>Markind.HotChocolate.AzureFunctions</PackageId>
     <AssemblyName>HotChocolate.AzureFunctions</AssemblyName>
     <RootNamespace>HotChocolate.AzureFunctions</RootNamespace>
     <Description>This package contains the GraphQL AzureFunctions integration for Hot Chocolate.</Description>
