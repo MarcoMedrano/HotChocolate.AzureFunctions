@@ -3,53 +3,6 @@ Azure supports multiple endpoints using multiple functions, official implementat
 
 > I let it be as mush as possible *aspnet* like implementation, so we do not need to change a lot of code when coming from server project.
 
-
-## Azure Functions **in process**
-### Install
-```shell
-dotnet add package Markind.HotChocolate.AzureFunctions
-```
-Why Markind? it is the name of the company I am willing to build. It is about to left mark in the earth.
-### Startup
-```csharp
-[assembly: FunctionsStartup(typeof(Startup))]
-
-public class Startup : FunctionsStartup
-{
-    public override void Configure(IFunctionsHostBuilder builder)
-    {
-        builder.Services.AddGraphQLServer("persons") // schema 1
-                        .AddQueryType<Query>();
-
-        builder.Services.AddGraphQLServer("persons2") // schema 2, etc..
-                        .AddQueryType<Query2>();
-
-        builder.AddGraphQLFunctions(); // Add support for Azure FunctionS
-    }
-}
-```
-
-### Function
-Make sure to use **IMultiSchemaRequestExecutor**.
-```csharp
-public class GraphQLFunction
-{
-    [FunctionName("GraphQLHttpFunction")]
-    public Task<IActionResult> Run(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "persons/{**slug}")] 
-        HttpRequest request,
-        [GraphQL] 
-        IMultiSchemaRequestExecutor executor)
-        => executor.ExecuteAsync(request, "persons");
-}
-```
-Create the other functions and make sure to set the schema name `executor.ExecuteAsync(request, "persons2");`
-
-Full sample at [samples/Azf](https://github.com/MarcoMedrano/HotChocolate.AzureFunctions/tree/main/samples/Azf)
-
-
----
-
 ## Azure Functions **Isolated Process**
 
 ### Install

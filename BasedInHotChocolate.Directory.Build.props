@@ -57,10 +57,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.0" PrivateAssets="All"/> -->
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="README.md" Pack="true" PackagePath="\" />
     <!-- <None Include="$(MSBuildThisFileDirectory)..\website\static\resources\greendonut-signet.png" Pack="true" PackagePath="greendonut-signet.png" Visible="false" />
     <None Include="$(MSBuildThisFileDirectory)..\website\static\resources\hotchocolate-signet.png" Pack="true" PackagePath="hotchocolate-signet.png" Visible="false" />
