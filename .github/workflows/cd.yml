@@ -26,7 +26,7 @@ jobs:
         echo "The next tag version will be: ${{steps.tag_dry_run.outputs.new_version}}"
 
     - name: GO TO AzureFunctions
-      run: cd .\src\HotChocolate.AzureFunctions\
+      run: cd ./src/HotChocolate.AzureFunctions
 
     - name: BUILD AzureFunctions
       run: dotnet build --configuration Release /p:Version=${{steps.tag_dry_run.outputs.new_version}}
@@ -38,7 +38,7 @@ jobs:
       run: dotnet nuget push Markind.HotChocolate.AzureFunctions.${{steps.tag_dry_run.outputs.new_version}}.nupkg -k ${{ secrets.NUGET_KEY }} -s https://api.nuget.org/v3/index.json
 
     - name: GO TO AzureFunctions.IsolatedProcess
-      run: cd .\src\HotChocolate.AzureFunctions.IsolatedProcess\
+      run: cd ./src/HotChocolate.AzureFunctions.IsolatedProcess
 
     - name: BUILD AzureFunctions.IsolatedProcess
       run: dotnet build --configuration Release /p:Version=${{steps.tag_dry_run.outputs.new_version}}
