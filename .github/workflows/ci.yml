@@ -20,7 +20,7 @@ jobs:
           3.1.x
           5.0.x
           6.0.x
-          7.0.x
+          7.0.100-rc.2
     - name: Restore dependencies
       run: dotnet restore
     - name: Build

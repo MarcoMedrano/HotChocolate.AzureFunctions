@@ -1,4 +1,4 @@
-# Multi Schema / Endpoint for HotChocolate Azure Functions.
+# Multi Schema/Endpoint for HotChocolate Azure Functions.
 Azure supports multiple endpoints using multiple functions, official implementation of HotChocolate (as 13.0.0-preview.66) does not yet. 
 
 > I let it be as mush as possible *aspnet* like implementation, so we do not need to change a lot of code when coming from server project.
