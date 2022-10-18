@@ -12,6 +12,8 @@ dotnet add package Markind.HotChocolate.AzureFunctions.IsolatedProcess
 Why Markind? it is the name of the company I am willing to build. It is about to left mark in the earth.
 ### Program
 ```csharp
+using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+
 var host = new HostBuilder()
     .ConfigureFunctionsWorkerDefaults()
     .ConfigureServices(s =>{
